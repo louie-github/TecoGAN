@@ -1,7 +1,7 @@
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 import pdb
-import keras
+from tensorflow import keras
 
 import numpy as np, cv2 as cv, scipy
 from scipy import signal
