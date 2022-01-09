@@ -41,26 +41,26 @@ def folder_check(path):
 if( runcase == 0 ): # download inference data, trained models
     # download the trained model
     if(not os.path.exists("./model/")): os.mkdir("./model/")
-    cmd1 = "wget https://ge.in.tum.de/download/data/TecoGAN/model.zip -O model/model.zip;"
+    cmd1 = "aria2c https://github.com/louie-github/TecoGAN/releases/download/v0.0.0/model.zip -o model/model.zip;"
     cmd1 += "unzip model/model.zip -d model; rm model/model.zip"
     subprocess.call(cmd1, shell=True)
     
     # download some test data
-    cmd2 = "wget https://ge.in.tum.de/download/data/TecoGAN/vid3_LR.zip -O LR/vid3.zip;"
+    cmd2 = "aria2c https://github.com/louie-github/TecoGAN/releases/download/v0.0.0/vid3_LR.zip -o LR/vid3.zip;"
     cmd2 += "unzip LR/vid3.zip -d LR; rm LR/vid3.zip"
     subprocess.call(cmd2, shell=True)
     
-    cmd2 = "wget https://ge.in.tum.de/download/data/TecoGAN/tos_LR.zip -O LR/tos.zip;"
+    cmd2 = "aria2c https://github.com/louie-github/TecoGAN/releases/download/v0.0.0/tos_LR.zip -o LR/tos.zip;"
     cmd2 += "unzip LR/tos.zip -d LR; rm LR/tos.zip"
     subprocess.call(cmd2, shell=True)
     
     # download the ground-truth data
     if(not os.path.exists("./HR/")): os.mkdir("./HR/")
-    cmd3 = "wget https://ge.in.tum.de/download/data/TecoGAN/vid4_HR.zip -O HR/vid4.zip;"
+    cmd3 = "aria2c https://github.com/louie-github/TecoGAN/releases/download/v0.0.0/vid4_HR.zip -o HR/vid4.zip;"
     cmd3 += "unzip HR/vid4.zip -d HR; rm HR/vid4.zip"
     subprocess.call(cmd3, shell=True)
     
-    cmd3 = "wget https://ge.in.tum.de/download/data/TecoGAN/tos_HR.zip -O HR/tos.zip;"
+    cmd3 = "aria2c https://github.com/louie-github/TecoGAN/releases/download/v0.0.0/tos_HR.zip -o HR/tos.zip;"
     cmd3 += "unzip HR/tos.zip -d HR; rm HR/tos.zip"
     subprocess.call(cmd3, shell=True)
     
@@ -116,7 +116,7 @@ elif( runcase == 3 ): # Train TecoGAN
     if(not os.path.exists(VGGModelPath)):
         # Download the VGG 19 model from 
         print("VGG model not found, downloading to %s"%VGGPath)
-        cmd0 = "wget http://download.tensorflow.org/models/vgg_19_2016_08_28.tar.gz -O " + os.path.join(VGGPath, "vgg19.tar.gz")
+        cmd0 = "aria2c https://github.com/louie-github/TecoGAN/releases/download/v0.0.0/vgg_19_2016_08_28.tar.gz -o " + os.path.join(VGGPath, "vgg19.tar.gz")
         cmd0 += ";tar -xvf " + os.path.join(VGGPath,"vgg19.tar.gz") + " -C " + VGGPath + "; rm "+ os.path.join(VGGPath, "vgg19.tar.gz")
         subprocess.call(cmd0, shell=True)
         
@@ -128,7 +128,7 @@ elif( runcase == 3 ): # Train TecoGAN
     if(not os.path.exists(FRVSRModel+".data-00000-of-00001")):
         # Download our pre-trained FRVSR model
         print("pre-trained FRVSR model not found, downloading")
-        cmd0 = "wget http://ge.in.tum.de/download/2019-TecoGAN/FRVSR_Ours.zip -O model/ofrvsr.zip;"
+        cmd0 = "aria2c https://github.com/louie-github/TecoGAN/releases/download/v0.0.0/FRVSR_Ours.zip -o model/ofrvsr.zip;"
         cmd0 += "unzip model/ofrvsr.zip -d model; rm model/ofrvsr.zip"
         subprocess.call(cmd0, shell=True)
     
